@@ -20,13 +20,13 @@ docker run --name mariadb ispyb-pydb
 
 Two users are available:
 
-- Normal user:
+-   Normal user:
 
-  - Login: `abcd`
-  - Password: Anything but not empty.
+    -   Login: `abcd`
+    -   Password: Anything but not empty.
 
-- Admin user:
-  - Login: `efgh`
-  - Password: Anything but not empty.
+-   Admin user:
+    -   Login: `efgh`
+    -   Password: Anything but not empty.
 
 Proposal name is `blc00001` and session is `blc00001-1`.
