@@ -20,7 +20,7 @@ docker run --name mariadb ispyb-pydb
 
 Two users are available:
 
--   Normal user:
+-   Noormal user:
 
     -   Login: `abcd`
     -   Password: Anything but not empty.
