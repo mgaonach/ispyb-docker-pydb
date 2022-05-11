@@ -28,12 +28,15 @@ jobs:
               uses: docker/metadata-action@v3
               with:
                   images: mgaonach/ispyb-pydb
+                  tags: |
+                    type=ref,event=branch
+                    type=raw,value=${{ steps.release.outputs.tag_name }}
 
             - name: Build and push Docker image
               uses: docker/build-push-action@v2
               with:
                   context: .
                   push: true
-                  tags: ${{ steps.release.outputs.tag_name }}
+                  tags: ${{ steps.meta.outputs.tags }}
                   labels: ${{ steps.meta.outputs.labels }}
                   
