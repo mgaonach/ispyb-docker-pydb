@@ -4,20 +4,16 @@ on:
             - main
 
 jobs:
-    release-on-push:
+    release-and-publish:
         runs-on: ubuntu-latest
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         steps:
-            - uses: rymndhng/release-on-push-action@v0.25.0
+            - id: release
+              name: Make a new github release
+              uses: rymndhng/release-on-push-action@v0.25.0
               with:
                   bump_version_scheme: minor
-                  
-    push_to_registry:
-        needs: release-on-push
-        name: Push Docker image to Docker Hub
-        runs-on: ubuntu-latest
-        steps:
             - name: Check out the repo
               uses: actions/checkout@v3
 
@@ -38,5 +34,6 @@ jobs:
               with:
                   context: .
                   push: true
-                  tags: ${{ steps.meta.outputs.tags }}
+                  tags: ${{ steps.release.outputs.tag_name }}
                   labels: ${{ steps.meta.outputs.labels }}
+                  
