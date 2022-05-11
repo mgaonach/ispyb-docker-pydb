@@ -1,3 +1,6 @@
+
+name: Publish Docker image (auto release)
+
 on:
     push:
         branches:
@@ -29,7 +32,7 @@ jobs:
               with:
                   images: mgaonach/ispyb-pydb
                   tags: |
-                    type=ref,event=branch
+                    type=raw,value=latest
                     type=raw,value=${{ steps.release.outputs.tag_name }}
 
             - name: Build and push Docker image
